@@ -38,15 +38,16 @@ public class ChatbotService {
         requestBody.put("max_tokens", 100);
         requestBody.put("temperature", 0.2);
 
+        System.out.println(completePrompt);
+        System.out.println(requestBody);
+
         String apiResponse = webClient.post()
                 .uri("/v1/engines/davinci/completions") // This is a hypothetical endpoint, refer to actual API docs
-                .header("Authorization", "Bearer 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")
+                .header("Authorization", "Bearer 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")
                 .bodyValue(requestBody)
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();
-
-
         return apiResponse;
     }
 }
