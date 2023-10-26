@@ -28,22 +28,35 @@ public class SummaryService {
     public String generateSummary() {
         try {
             String productsData = productFormatterService.getProductsData();
-            System.out.println(productsData);
-            String test = "Product ID: 1\n" +
-                    "Product name: sweater knit blanket\n" +
-                    "Product category: bedding\n" +
-                    "Product URL: https://www.saatva.com/bedding/sweater-knit-blanket";
+            //System.out.println(productsData);
+            String test = "Product ID is 1\n" +
+                    "Product name is sweater knit blanket\n" +
+                    "Product category is bedding\n" +
+                    "Product URL is  https://www.saatva.com/bedding/sweater-knit-blanket"+
+                    "Product details are " +
+                    "Home\n" +
+                    "arrowBedding\n" +
+                    "Sweater Knit Blanket\n" +
+                    "slide page 1 of 6\n" +
+                    "home-trial\n" +
+                    "45-day free returnsLearn MoreChevron Right\n" +
+                    "mattress-removal\n" +
+                    "Free shippingLearn MoreChevron Right\n" +
+                    "warranty\n" +
+                    "1-year limited warrantyLearn MoreChevron Right\n" +
+                    "Sweater Knit Blanket\n" +
+                    "A supremely soft blanket that’s as cozy as your favorite sweater";
 
             Map<String, Object> requestBody = new HashMap<>();
-            requestBody.put("prompt", "Extract and provide the product name from the following information:"+ test);
+            requestBody.put("prompt", "Write a summary for each product using the following product information:"+ productsData);
             requestBody.put("max_tokens", 50);
-            requestBody.put("temperature", 0.2);
+            requestBody.put("temperature", 0.5);
 
             //System.out.println(requestBody);
 
             String apiResponse = webClient.post()
                     .uri("/v1/engines/davinci/completions") // Adjust if necessary
-                    .header("Authorization", "Bearer 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")
+                    .header("Authorization", "Bearer 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")
                     .header("Content-Type", "application/json")
                     .bodyValue(requestBody)
                     .retrieve()

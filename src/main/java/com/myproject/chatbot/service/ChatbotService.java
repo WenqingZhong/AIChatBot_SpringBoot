@@ -1,6 +1,7 @@
 package com.myproject.chatbot.service;
 
 import com.myproject.chatbot.model.Product;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -13,8 +14,10 @@ import java.util.Map;
 public class ChatbotService {
 
     private final WebClient webClient;
-    private final ProductFormatterService productFormatterService;
-    private List<Product> products;
+
+    @Autowired
+    private ProductFormatterService productFormatterService;
+    //private List<Product> products;
 
     public ChatbotService() {
         this.webClient = WebClient.builder()
@@ -23,15 +26,16 @@ public class ChatbotService {
 
         this.productFormatterService = new ProductFormatterService();
 
-        this.products = Arrays.asList(
-                new Product("1", "Product A", "I am a dog"),
-                new Product("2", "Product B", "I am a cat")
-        );
+//        this.products = Arrays.asList(
+//                new Product("1", "Product A", "I am a dog"),
+//                new Product("2", "Product B", "I am a cat")
+//        );
     }
 
     public String getResponse(String question) {
-        String formattedProducts = productFormatterService.formatProducts(products);
-        String completePrompt = "Given these products: \n"+ formattedProducts + "\n\n" + "Please answer the following question:"+ question;
+        String productsData = productFormatterService.getProductsData();
+        //String formattedProducts = productFormatterService.formatProducts(products);
+        String completePrompt = "Given these products: \n"+ productsData + "\n\n" + "Please answer the following question:"+ question;
 
         Map<String, Object> requestBody = new HashMap<>();
         requestBody.put("prompt", completePrompt);
@@ -43,7 +47,7 @@ public class ChatbotService {
 
         String apiResponse = webClient.post()
                 .uri("/v1/engines/davinci/completions") // This is a hypothetical endpoint, refer to actual API docs
-                .header("Authorization", "Bearer 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")
+                .header("Authorization", "Bearer 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")
                 .bodyValue(requestBody)
                 .retrieve()
                 .bodyToMono(String.class)
