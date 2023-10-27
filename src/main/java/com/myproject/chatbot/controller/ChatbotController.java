@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 @RestController
 @RequestMapping("/api")
@@ -18,7 +21,6 @@ public class ChatbotController {
     @PostMapping("/ask")
     public ResponseEntity<String> askQuestion(@RequestBody String question) {
         String aiResponse = chatbotService.getResponse(question);
-        String responseText = JsonPath.parse(aiResponse).read("$.choices[0].text", String.class).trim();
-        return ResponseEntity.ok(responseText);
+        return ResponseEntity.ok(aiResponse);
     }
 }
