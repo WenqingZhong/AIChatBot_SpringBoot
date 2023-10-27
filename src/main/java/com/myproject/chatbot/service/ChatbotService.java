@@ -19,7 +19,7 @@ import java.net.URL;
 @Service
 public class ChatbotService {
     private static final String URL = "https://api.openai.com/v1/chat/completions";
-    private static final String API_KEY = "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"; // Ensure to add your actual key here
+    private static final String API_KEY = "XXX"; // Ensure to add your actual key here
     private static final String MODEL = "gpt-3.5-turbo";
 
     @Autowired
@@ -31,9 +31,17 @@ public class ChatbotService {
 
     public String getResponse(String question) {
         String productsData = productFormatterService.getProductsData();
-        String completePrompt = "Please answer this question: " + question;
+        String test = "Product ID: 1 \n" +
+                "Product name: percale sheet set" +
+                "Product category: bedding" +
+                "Product URL: https://www.saatva.com/bedding/percale-sheet-set";
 
-        return chatGPT(completePrompt);
+
+        String completePrompt = "Please answer the question:  " + question + "using the following information: "+ productsData;
+
+        String escapedPrompt = completePrompt.replace("\n", "\\n").replace("\"", "\\\"");
+
+        return chatGPT(escapedPrompt);
     }
 
     private String chatGPT(String prompt) {
