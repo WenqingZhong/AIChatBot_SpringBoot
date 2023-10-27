@@ -7,14 +7,13 @@ function sendMessage() {
     userDiv.className = 'message user-message';
     userDiv.innerText = userInput;
     chatbox.appendChild(userDiv);
-
     // Send the user message to the server
     fetch('/api/ask', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(userInput)
+        body:  userInput
     })
         .then(response => response.json())
         .then(data => {

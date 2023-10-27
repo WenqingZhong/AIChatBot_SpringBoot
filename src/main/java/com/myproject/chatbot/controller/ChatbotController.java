@@ -19,8 +19,10 @@ public class ChatbotController {
 
 
     @PostMapping("/ask")
-    public ResponseEntity<String> askQuestion(@RequestBody String question) {
+    public ResponseEntity<Map<String, String>> askQuestion(@RequestBody String question) {
         String aiResponse = chatbotService.getResponse(question);
-        return ResponseEntity.ok(aiResponse);
+        Map<String, String> responseBody = new HashMap<>();
+        responseBody.put("response", aiResponse);
+        return ResponseEntity.ok(responseBody);
     }
 }
