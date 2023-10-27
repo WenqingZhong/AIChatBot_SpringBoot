@@ -1,86 +1,53 @@
 package com.myproject.chatbot.service;
 
-import com.jayway.jsonpath.JsonPath;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
 
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Map;
+import java.nio.file.StandardOpenOption;
+import java.util.stream.Collectors;
 
 @Service
 public class SummaryService {
 
+    private static final String OUTPUT_FILE = "products-info.txt";
+    private final ChatbotService chatbotService;
+
     @Autowired
-    private ProductFormatterService productFormatterService;
-    private WebClient webClient;
-    @Autowired
-    public SummaryService(WebClient.Builder webClientBuilder) {
-        this.webClient = webClientBuilder
-                .baseUrl("https://api.openai.com")
-                .build();
+    public SummaryService(ChatbotService chatbotService) {
+        this.chatbotService = chatbotService;
     }
 
-    public String generateSummary() {
-        try {
-            String productsData = productFormatterService.getProductsData();
-            //System.out.println(productsData);
-            String test = "Product ID is 1\n" +
-                    "Product name is sweater knit blanket\n" +
-                    "Product category is bedding\n" +
-                    "Product URL is  https://www.saatva.com/bedding/sweater-knit-blanket"+
-                    "Product details are " +
-                    "Home\n" +
-                    "arrowBedding\n" +
-                    "Sweater Knit Blanket\n" +
-                    "slide page 1 of 6\n" +
-                    "home-trial\n" +
-                    "45-day free returnsLearn MoreChevron Right\n" +
-                    "mattress-removal\n" +
-                    "Free shippingLearn MoreChevron Right\n" +
-                    "warranty\n" +
-                    "1-year limited warrantyLearn MoreChevron Right\n" +
-                    "Sweater Knit Blanket\n" +
-                    "A supremely soft blanket that’s as cozy as your favorite sweater";
+    public String getSummary() throws IOException {
+        String productData = readProductData();
+        String question = "Please provide a summary for the following product details:";
+        String completePrompt = question + "\n" + productData;
 
-            Map<String, Object> requestBody = new HashMap<>();
-            requestBody.put("prompt", "Write a summary for each product using the following product information:"+ productsData);
-            requestBody.put("max_tokens", 50);
-            requestBody.put("temperature", 0.5);
+        String summary = chatbotService.getResponse(completePrompt);
 
-            //System.out.println(requestBody);
+        // Save to file
+        saveSummaryToFile(summary);
 
-            String apiResponse = webClient.post()
-                    .uri("/v1/engines/davinci/completions") // Adjust if necessary
-                    .header("Authorization", "Bearer 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")
-                    .header("Content-Type", "application/json")
-                    .bodyValue(requestBody)
-                    .retrieve()
-                    .bodyToMono(String.class)
-                    .block();
+        return summary;
+    }
 
-            String summary = JsonPath.read(apiResponse, "$.choices[0].text");
-            System.out.println(summary);
+    private String readProductData() throws IOException {
+        InputStream is = getClass().getClassLoader().getResourceAsStream("products.txt");
+        if (is == null) {
+            throw new FileNotFoundException("Cannot find products.txt");
+        }
 
-            return summary;
-        }catch(Exception e) {
-            // Log the detailed error message and stack trace
-            e.printStackTrace();
-            return "Error occurred: " + e.getMessage();
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
+            return reader.lines().collect(Collectors.joining("\n"));
         }
     }
 
-    public void saveSummaryToFile(String summary) {
-        //save 'summary' to 'products_info.txt'
-        Path path = Paths.get("products_info.txt");
-        try {
-            Files.write(path, summary.getBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private void saveSummaryToFile(String summary) throws IOException {
+        Path outputPath = Paths.get(OUTPUT_FILE);
+        Files.write(outputPath, summary.getBytes(StandardCharsets.UTF_8), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
     }
 }
