@@ -19,7 +19,7 @@ public class SummaryService {
     @Autowired
     private ChatbotService chatbotService;
 
-    private static final int CHUNK_SIZE = 10; // Number of lines per chunk
+    private static final int CHUNK_SIZE = 100; // Number of lines per chunk
 
     private static final String INPUT_PATH = "src/main/resources/products.txt";
     private static final String OUTPUT_PATH = "src/main/resources/products-info.txt";

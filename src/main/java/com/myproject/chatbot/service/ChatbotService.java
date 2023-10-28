@@ -20,7 +20,7 @@ import java.net.URL;
 @Service
 public class ChatbotService {
     private static final String URL = "https://api.openai.com/v1/chat/completions";
-    private String API_KEY = "XXX"; // Ensure to add your actual key here
+    private String API_KEY = "";
     private static final String MODEL = "gpt-3.5-turbo";
 
     @Autowired
