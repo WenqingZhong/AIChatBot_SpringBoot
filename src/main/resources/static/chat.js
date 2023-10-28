@@ -3,13 +3,19 @@ let chatOutput = document.getElementById("chat-output");
 let chatInput = document.getElementById("chat-input");
 let productsList = [];
 
+chatInput.addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+        sendMessage();
+    }
+});
+
 async function getAvailableProducts() {
     try {
         let response = await fetch("http://localhost:8080/api/products");
         let data = await response.json();
         let productsDescription = data.products;
         // Store the product list for validation
-        productsList = productsDescription.split(','); // Assuming products are comma-separated
+        productsList = productsDescription.split(', '); // Assuming products are comma-separated
         appendMessage("Bot", productsDescription);
         appendMessage("Bot", "Please pick a valid product from the list above.");
     } catch (error) {
@@ -24,6 +30,7 @@ async function sendMessage() {
 
     if (!currentProduct) {
         // Check if the product is valid
+        console.log(productsList);
         if (productsList.includes(message)) {
             currentProduct = message;
             appendMessage("Bot", `You selected product "${currentProduct}". Please ask your question about this product.`);

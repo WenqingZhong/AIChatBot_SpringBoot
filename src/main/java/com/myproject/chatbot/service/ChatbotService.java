@@ -2,13 +2,7 @@ package com.myproject.chatbot.service;
 
 import com.jayway.jsonpath.JsonPath;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.reactive.function.client.WebClientResponseException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,7 +15,7 @@ import java.util.List;
 @Service
 public class ChatbotService {
     private static final String URL = "https://api.openai.com/v1/chat/completions";
-    private String API_KEY = "";
+    private String API_KEY = "XXX";
     private static final String MODEL = "gpt-3.5-turbo";
 
     @Autowired
