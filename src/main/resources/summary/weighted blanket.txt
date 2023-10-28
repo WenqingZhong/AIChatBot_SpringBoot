@@ -1,70 +1,85 @@
-Product ID: 11
-Product name: Weighted Blanket
-Product category: Bedding
-Product URL: https://www.saatva.com/bedding/weighted-blanket
+- Product ID: 11
+- Product name: weighted blanket
+- Product category: bedding
+- Product URL: https://www.saatva.com/bedding/weighted-blanket
+- Plush, all-natural weighted blanket for deeper, more restful sleep
+- Luxurious diamond quilted cotton velvet
+- All-natural glass beads provide gentle, even pressure
+- Dry clean as needed
+- Price: $345 for Throw (12 lbs), $495 for Queen/King (20 lbs)
+- Promotes restful sleep through deep pressure stimulation
+- Soft, cozy, and breathable with natural cotton velvet
+- Ethically sourced cotton from India
+- Chemical-free and eco-friendly
+- Not recommended for children
+- Available in multiple sizes based on body weight
+- Can be used on its own or over a comforter
+- Suitable for nightly use or as needed
+- Fair Trade Certified™ cotton
+- 45-day free returns for bedding and bath products
+- Saatva bedding does not currently have an exchange policy, but customers can return their order and repurchase the item of their choice.
+- The bedding color options are curated to fit a neutral color palette and eco-friendly dyes are used.
+- Saatva offers a $225 discount off orders of $1,000 or more to first responders, veterans, active military, and more.
+- Customers can sign up for the mailing list or text BED to SAATVA to be notified of promotional sales.
+- Customer satisfaction rates are high, with the majority of customers recommending Saatva to others and experiencing better sleep.
+- Saatva has an A+ rating from the Better Business Bureau and a high customer satisfaction rate.
+- Additional bedding products are available, such as mattress pads, pillows, adjustable bases, and sheet sets.
+- Prices and descriptions of various bedding products are listed.
+- Chevron Right: Product URL(if provided)
 
-Summary: The Weighted Blanket is a plush, all-natural bedding product designed to provide deeper and more restful sleep. It is made of luxurious diamond quilted cotton velvet and filled with all-natural glass beads for gentle, even pressure. The blanket promotes restful sleep through deep pressure stimulation and is soft, cozy, breathable, and ethically sourced. It is available in two sizes (Throw and Queen/King) and comes with a 45-day free returns policy and 1-year limited warranty. The price ranges from $345 to $495, and it can be purchased online at https://www.saatva.com/bedding/weighted-blanket.
-Product 1: Saatva Bedding
-At this time, there is no exchange policy for Saatva bedding. Customers who would like to exchange their merchandise can simply return their order and repurchase the item of their choice.
-
-Product 2: Saatva Mattress
-97.5% of customers surveyed said they would recommend Saatva to their friends and family. 91% of customers surveyed said they wake up more refreshed after sleeping on their Saatva mattress compared to their previous mattress. 95% of customers surveyed said that they are sleeping better on their Saatva mattress than on their previous mattress. 93.1% of customers surveyed said that Saatva helped alleviate their neck pain, and 93.9% of customers surveyed said that Saatva helped alleviate their back pain. Saatva has earned an A+ rating from the Better Business Bureau, and 96% of Saatva customers are satisfied with their purchase.
-
-Product 3: Saatva Mattress Pad
-The Saatva mattress pad provides added comfort and protection. It is made with organic cotton and is available at a price range of $195 to $390.
-
-Product 4: Saatva Latex Pillow
-The Saatva latex pillow is responsive and breathable, suitable for all sleepers. It is priced between $165 and $370.
-
-Product 5: Saatva Adjustable Base Plus
-The Saatva adjustable base plus offers weightless support, full body massage, and more. It is available at a price range of $1,062 to $2,209, with a discounted price of $1,249 to $2,598.
-
-Product 6: Organic Sateen Sheet Set
-The organic sateen sheet set is silky-soft and made from 100% organic cotton. It is priced between $195 and $295.
-
-Product 7: Graphite Memory Foam Topper
-The graphite memory foam topper provides cooling and a body-hugging feel. It is available at a price range of $325 to $650.
-
-Product 8: Santorini Platform Bed Frame
-The Santorini platform bed frame does not require a foundation and is available at a price range of $1,271 to $1,441, with a discounted price of $1,495 to $1,695.
-
-Product 9: Graphite Memory Foam Pillow
-The graphite memory foam pillow offers contouring support and is designed for side sleepers. It is priced between $165 and $370.
-
-Product 10: All-Year Down Alternative Comforter
-The all-year down alternative comforter provides plush comfort and features a percale cotton cover. It is available at a price range of $235 to $365.
-
-Product 11: Minori Standard Bed Frame
-The Minori standard bed frame requires a foundation and is available at a price range of $1,526 to $1,696, with a discounted price of $1,795 to $1,995.
-
-Product 12: Percale Sheet Set
-The percale sheet set is crisp and cool, made from 100% long staple cotton. It is priced between $125 and $235.
-
-Product 13: Down Alternative Pillow
-The down alternative pillow offers a plush and airy feel, suitable for combination sleepers. It is priced between $115 and $270.
-
-Product 14: Valencia Platform Bed Frame
-The Valencia platform bed frame does not require a foundation and is available at a price range of $1,441 to $1,611, with a discounted price of $1,695 to $1,895.
-1. Mattress Pad: This product provides added comfort and protection to your mattress. It is made of organic cotton and is priced between $195 and $390.
-
-2. Saatva Latex Pillow: Designed for all types of sleepers, this pillow is responsive and breathable. It is available at a price range of $165 to $370.
-
-3. Saatva Adjustable Base Plus: This adjustable base provides weightless support and has features like a full body massage. Prices range from $1,062 to $2,209 for the standard model and $1,249 to $2,598 for the plus model.
-
-4. Organic Sateen Sheet Set: Made of 100% organic cotton, this sheet set offers a silky-soft feel. The price range for this product is $195 to $295.
-
-5. Graphite Memory Foam Topper: This topper provides cooling properties and offers a body-hugging feel. It is priced between $325 and $650.
-
-6. Santorini: This platform bed frame does not require a foundation. Prices range from $1,271 to $1,441 for the standard model and $1,495 to $1,695 for the plus model.
-
-7. Graphite Memory Foam Pillow: Designed for side sleepers, this pillow offers contouring support. It is priced between $165 and $370.
-
-8. All-Year Down Alternative Comforter: This comforter provides plush comfort and has a percale cotton cover. Prices range from $235 to $365.
-
-9. Minori: This standard bed frame requires a foundation. Prices range from $1,526 to $1,696 for the standard model and $1,795 to $1,995 for the plus model.
-
-10. Percale Sheet Set: Made of 100% long staple cotton, this sheet set offers a crisp and cool feel. It is priced between $125 and $235.
-
-11. Down Alternative Pillow: This pillow has a plush and airy feel, perfect for combination sleepers. Prices range from $115 to $270.
-
-12. Valencia: Similar to the Santorini, this platform bed frame does not require a foundation. Prices range from $1,441 to $1,611 for the standard model and $1,695 to $1,895 for the plus model.
+- Mattress Pad: 
+  - Added comfort & protection
+  - Made with organic cotton
+  - Price range: $195 - $390
+  
+- Saatva Latex Pillow: 
+  - Responsive & breathable
+  - Suitable for all sleepers
+  - Price range: $165 - $370
+  
+- Saatva Adjustable Base Plus: 
+  - Provides weightless support
+  - Offers full body massage and more features
+  - Price range: $1,062 - $2,209 or $1,249 - $2,598 (depending on the model)
+  
+- Organic Sateen Sheet Set: 
+  - Silky-soft feel
+  - Made with 100% organic cotton
+  - Price range: $195 - $295
+  
+- Graphite Memory Foam Topper: 
+  - Cooling properties
+  - Provides a body-hugging feel
+  - Price range: $325 - $650
+  
+- Santorini Platform bed frame:
+  - No foundation required
+  - Price range: $1,271 - $1,441 or $1,495 - $1,695 (depending on the size)
+  
+- Graphite Memory Foam Pillow: 
+  - Provides contouring support
+  - Designed for side sleepers
+  - Price range: $165 - $370
+  
+- All-Year Down Alternative Comforter:
+  - Offers plush comfort
+  - Features a percale cotton cover
+  - Price range: $235 - $365
+  
+- Minori Standard bed frame: 
+  - Requires a foundation
+  - Price range: $1,526 - $1,696 or $1,795 - $1,995 (depending on the size)
+  
+- Percale Sheet Set: 
+  - Crisp and cool feel
+  - Made with 100% long staple cotton
+  - Price range: $125 - $235
+  
+- Down Alternative Pillow: 
+  - Provides a plush and airy feel
+  - Suitable for combination sleepers
+  - Price range: $115 - $270
+  
+- Valencia Platform bed frame: 
+  - No foundation required
+  - Price range: $1,441 - $1,611 or $1,695 - $1,895 (depending on the size)

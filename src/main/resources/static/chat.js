@@ -2,6 +2,7 @@ let currentProduct = null;
 let chatOutput = document.getElementById("chat-output");
 let chatInput = document.getElementById("chat-input");
 let productsList = [];
+let allProducts = "Test";
 
 chatInput.addEventListener("keyup", function(event) {
     if (event.key === "Enter") {
@@ -16,8 +17,8 @@ async function getAvailableProducts() {
         let productsDescription = data.products;
         // Store the product list for validation
         productsList = productsDescription.split(', '); // Assuming products are comma-separated
-        appendMessage("Bot", productsDescription);
-        appendMessage("Bot", "Please pick a valid product from the list above.");
+        //appendMessage("Bot", productsDescription);
+        appendMessage("Bot", "Hello! How may I help you?");
     } catch (error) {
         appendMessage("Bot", "Error fetching products. Please try again.");
     }
@@ -28,15 +29,15 @@ async function sendMessage() {
     chatInput.value = "";
     appendMessage("You", message);
 
-    if (!currentProduct) {
-        // Check if the product is valid
-        console.log(productsList);
-        if (productsList.includes(message)) {
-            currentProduct = message;
-            appendMessage("Bot", `You selected product "${currentProduct}". Please ask your question about this product.`);
-        } else {
-            appendMessage("Bot", `The product "${message}" is not valid. Please pick a valid product from the list.`);
-        }
+    let detectedProduct = containsValidProduct(message);
+
+    if (detectedProduct && detectedProduct !== currentProduct) {
+        currentProduct = detectedProduct;
+        appendMessage("Bot", `It seems like you might be interested in "${currentProduct}". Please feel free to ask me anything about this product.`);
+        return;
+    } else if (!currentProduct) {
+        appendMessage("Bot", `The product "${message}" is not valid. Please pick a valid product.`);
+        //appendMessage("Bot", allProducts);
         return;
     }
 
@@ -59,10 +60,36 @@ async function sendMessage() {
     }
 }
 
+
 function appendMessage(sender, message) {
-    chatOutput.innerHTML += `<p><strong>${sender}:</strong> ${message}</p>`;
-    chatOutput.scrollTop = chatOutput.scrollHeight; // Scroll to bottom
+    let convertedMessage = convertUrlsToAnchors(message);
+    let messageClass = sender === "Bot" ? "bot-message" : "user-message";
+    chatOutput.innerHTML += `
+        <div class="message-row">
+            <div class="${messageClass}">${convertedMessage}</div>
+        </div>`;
+    chatOutput.scrollTop = chatOutput.scrollHeight;
 }
+
+function containsValidProduct(message) {
+    for (let product of productsList) {
+        if (message.toLowerCase().includes(product.toLowerCase())) {
+            return product;
+        }
+    }
+    return null;
+}
+
+function convertUrlsToAnchors(text) {
+    text = text.replace(/^\W+|\W+$/g, '');
+    const urlRegex = /(https?:\/\/[^\s]+)\.?/g;
+    return text.replace(urlRegex, (match, urlWithoutPeriod) => {
+
+        return `<a href="${urlWithoutPeriod}" target="_blank">follow me</a>`;
+    });
+}
+
+
 
 // Fetch available products once the page is loaded
 getAvailableProducts();

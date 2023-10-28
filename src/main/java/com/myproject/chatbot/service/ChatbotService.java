@@ -25,36 +25,33 @@ public class ChatbotService {
         this.productFormatterService = new ProductFormatterService();
     }
 
-    private static final List<String> VALID_PRODUCTS = List.of("aero quilt", "banded percale duvet set", "linen duvet cover set");
+    private static final List<String> VALID_PRODUCTS =
+            List.of( "organic sateen duvet cover set", "flannel sheet set", "embroidered hotel style sheets",
+                    "memory foam hybrid", "aero quilt", "waffle knit duvet cover set", "silk eye mask", "herringbone knit blanket",
+                    "saatva hd", "diamond knit blanket", "embroidered sateen duvet set",
+                    "linen sheet set", "solaire", "organic percale duvet cover set", "banded percale sheet set",
+                    "saatva latex hybrid", "weighted silk eye mask", "percale sheet set", "essential sheet set", "saatva rx",
+                    "waffle knit blanket", "sweater knit blanket", "weighted blanket", "waffle towels", "organic cotton sheets",
+                    "saatva classic", "organic cotton channel quilt", "zenhaven", "loom and leaf", "sateen cotton sheet set",
+                    "banded percale duvet set", "saatva youth", "plush towels", "organic velvet quilt", "linen duvet cover set");
+
 
     public String getAvailableProducts() {
         return String.join(", ", VALID_PRODUCTS);
     }
 
     public String processUserChoice(String userChoice, String question) {
-        if (VALID_PRODUCTS.contains(userChoice)) {
+        if (VALID_PRODUCTS.contains(userChoice.toLowerCase())) {
             String productsData = productFormatterService.getProductsData(userChoice);
             return generateResponse(question, productsData);
         } else {
-            return "Invalid product choice. Please pick a valid product.";
+            return "Invalid product. Please pick a valid product.";
         }
     }
 
     private String generateResponse(String question, String productsData) {
-        String completePrompt = "Please answer the question: " + question + " using the following information: " + productsData;
+        String completePrompt = "Please answer the question: " + question + " using the following information: " + productsData + "\n Please speak casually like a real person. Provide the full redirect product URL in the provided data if the URL starts with 'http'.";
         String escapedPrompt = completePrompt.replace("\n", "\\n").replace("\"", "\\\"");
-        return chatGPT(escapedPrompt);
-    }
-
-    public String getResponse(String question) {
-        String productsData = productFormatterService.getProductsData("aero quilt");
-        System.out.println(productsData);
-
-        String completePrompt = "Please answer the question:  " + question + "using the following information: "+ productsData;
-        //String completePrompt = "Please answer the question:  " + question;
-
-        String escapedPrompt = completePrompt.replace("\n", "\\n").replace("\"", "\\\"");
-
         return chatGPT(escapedPrompt);
     }
 
@@ -62,8 +59,7 @@ public class ChatbotService {
         //String productsData = productFormatterService.getProductsData();
         System.out.println("I'm in getSummary");
 
-        String completePrompt = "Please summarize each product using the following information: "+ productInfo;
-        //String completePrompt = "Please answer the question:  " + question;
+        String completePrompt = "Please summarize the product information in bullet point fashion using the following data, and include Product URL in the summary if you see Product URL: "+ productInfo;
 
         String escapedPrompt = completePrompt.replace("\n", "\\n").replace("\"", "\\\"");
         //System.out.println("This is prompt"+escapedPrompt);

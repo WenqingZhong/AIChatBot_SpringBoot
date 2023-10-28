@@ -34,6 +34,7 @@ public class SummaryService {
 
         File inputFile = new File(inputFilePath);
         File outputFile = new File(outputFilePath);
+        System.out.println("Generating summary: "+inputFilePath);
 
         try (BufferedReader reader = new BufferedReader(new FileReader(inputFile));
              BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {

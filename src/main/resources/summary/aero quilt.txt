@@ -1,57 +1,31 @@
-The product is the Aero Quilt, which is a lightweight quilt made of a cotton-viscose gauze weave. It is available in three sizes (Twin/Twin XL, Full/Queen, King/Cal King) and is priced at $295. The quilt is breathable, hypoallergenic, and has been certified to be free of harmful chemicals. It can be used on its own on warmer nights, layered with a duvet on chilly nights, or used as a blanket on the couch. The product comes with a 45-day free return policy and a 1-year limited warranty. More details and purchasing options can be found on the product URL: https://www.saatva.com/bedding/aero-quilt
-Saatva offers a range of bedding products including mattress pads, pillows, adjustable bases, sheet sets, toppers, bed frames, and comforters. They have a variety of options to enhance comfort and provide quality sleep. They also offer discounts to first responders, veterans, active military, and more. Saatva has a high customer satisfaction rating and is recommended by many customers. They prioritize eco-friendly practices by using natural fabrics and nontoxic dyes. Currently, they do not have an exchange policy for their bedding products.
-Product 1: Mattress Pad
-- Provides added comfort and protection
-- Made with organic cotton
-- Price range: $195 - $390
-
-Product 2: Saatva Latex Pillow
-- Responsive and breathable
-- Suitable for all sleepers
-- Price range: $165 - $370
-
-Product 3: Saatva Adjustable Base Plus
-- Provides weightless support
-- Offers full body massage and more
-- Price range: $1,062 - $2,209
-
-Product 4: Organic Sateen Sheet Set
-- Silky-soft sheets
-- Made with 100% organic cotton
-- Price range: $195 - $295
-
-Product 5: Graphite Memory Foam Topper
-- Cooling and body-hugging feel
-- Price range: $325 - $650
-
-Product 6: Santorini Platform Bed Frame
-- No foundation required
-- Price range: $1,271 - $1,441
-
-Product 7: Graphite Memory Foam Pillow
-- Provides contouring support
-- Ideal for side sleepers
-- Price range: $165 - $370
-
-Product 8: All-Year Down Alternative Comforter
-- Offers plush comfort
-- Features a percale cotton cover
-- Price range: $235 - $365
-
-Product 9: Minori Standard Bed Frame
-- Requires a foundation
-- Price range: $1,526 - $1,696
-
-Product 10: Percale Sheet Set
-- Crisp and cool sheets
-- Made with 100% long staple cotton
-- Price range: $125 - $235
-
-Product 11: Down Alternative Pillow
-- Provides a plush and airy feel
-- Suitable for combination sleepers
-- Price range: $115 - $270
-
-Product 12: Valencia Platform Bed Frame
-- No foundation required
-- Price range: $1,441 - $1,611
+- Product name: Aero Quilt
+- Product category: Bedding
+- Product URL: https://www.saatva.com/bedding/aero-quilt
+- Price: $295
+- Size options: Twin/Twin XL ($245), Full/Queen ($295), King/Cal King ($345)
+- Cotton & viscose gauze weave quilt for maximum airflow
+- OEKO-TEX® Standard 100 certified to be free of harmful chemicals
+- Hypoallergenic poly batting fill
+- Bound in 1/2" of cotton twill for durability and an elegant finish
+- Machine washable
+- Can be used on its own, layered with a duvet, or as a blanket
+- Frequently asked questions included
+- Saatva bedding does not have an exchange policy.
+- The current bedding color options are curated to fit a neutral color palette.
+- Saatva offers a $225 discount to first responders, veterans, active military, and more.
+- There are occasional promotional sales on products.
+- Saatva has high customer satisfaction ratings and an A+ rating from the Better Business Bureau.
+- Customers recommend Saatva and experience better sleep and pain relief.
+- Saatva offers a range of bedding products including mattress pads, pillows, adjustable bases, sheet sets, toppers, bed frames, and comforters.
+- Mattress Pad: Added comfort & protection, made with organic cotton. Price range: $195 - $390.
+- Saatva Latex Pillow: Responsive & breathable pillow suitable for all sleepers. Price range: $165 - $370.
+- Saatva Adjustable Base Plus: Provides weightless support, full body massage, and more. Price range: $1,062 - $2,209.
+- Organic Sateen Sheet Set: Silky-soft sheets made with 100% organic cotton. Price range: $195 - $295.
+- Graphite Memory Foam Topper: Cooling topper with a body-hugging feel. Price range: $325 - $650.
+- Santorini Platform Bed Frame: No foundation required for this platform bed frame. Price range: $1,271 - $1,441.
+- Graphite Memory Foam Pillow: Provides contouring support, especially for side sleepers. Price range: $165 - $370.
+- All-Year Down Alternative Comforter: Plush comforter with a percale cotton cover. Price range: $235 - $365.
+- Minori Standard Bed Frame: Requires a foundation for this standard bed frame. Price range: $1,526 - $1,696.
+- Percale Sheet Set: Crisp & cool sheets made with 100% long staple cotton. Price range: $125 - $235.
+- Down Alternative Pillow: Plush and airy pillow suitable for combination sleepers. Price range: $115 - $270.
+- Valencia Platform Bed Frame: No foundation required for this platform bed frame. Price range: $1,441 - $1,611.
