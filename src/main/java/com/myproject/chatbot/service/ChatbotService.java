@@ -21,7 +21,7 @@ import java.util.List;
 @Service
 public class ChatbotService {
     private static final String URL = "https://api.openai.com/v1/chat/completions";
-    private String API_KEY = "XXX";
+    private String API_KEY = "";
     private static final String MODEL = "gpt-3.5-turbo";
 
     @Autowired
@@ -34,7 +34,7 @@ public class ChatbotService {
     private static final List<String> VALID_PRODUCTS = List.of("aero quilt", "banded percale duvet set", "linen duvet cover set");
 
     public String getAvailableProducts() {
-        return "Please select a product from the following list: " + String.join(", ", VALID_PRODUCTS);
+        return String.join(", ", VALID_PRODUCTS);
     }
 
     public String processUserChoice(String userChoice, String question) {
