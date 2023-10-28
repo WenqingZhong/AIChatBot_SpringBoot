@@ -16,11 +16,12 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 
 @Service
 public class ChatbotService {
     private static final String URL = "https://api.openai.com/v1/chat/completions";
-    private String API_KEY = "";
+    private String API_KEY = "XXX";
     private static final String MODEL = "gpt-3.5-turbo";
 
     @Autowired
@@ -30,8 +31,29 @@ public class ChatbotService {
         this.productFormatterService = new ProductFormatterService();
     }
 
+    private static final List<String> VALID_PRODUCTS = List.of("aero quilt", "banded percale duvet set", "linen duvet cover set");
+
+    public String getAvailableProducts() {
+        return "Please select a product from the following list: " + String.join(", ", VALID_PRODUCTS);
+    }
+
+    public String processUserChoice(String userChoice, String question) {
+        if (VALID_PRODUCTS.contains(userChoice)) {
+            String productsData = productFormatterService.getProductsData(userChoice);
+            return generateResponse(question, productsData);
+        } else {
+            return "Invalid product choice. Please pick a valid product.";
+        }
+    }
+
+    private String generateResponse(String question, String productsData) {
+        String completePrompt = "Please answer the question: " + question + " using the following information: " + productsData;
+        String escapedPrompt = completePrompt.replace("\n", "\\n").replace("\"", "\\\"");
+        return chatGPT(escapedPrompt);
+    }
+
     public String getResponse(String question) {
-        String productsData = productFormatterService.getProductsData();
+        String productsData = productFormatterService.getProductsData("aero quilt");
         System.out.println(productsData);
 
         String completePrompt = "Please answer the question:  " + question + "using the following information: "+ productsData;

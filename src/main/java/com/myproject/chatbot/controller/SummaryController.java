@@ -16,7 +16,7 @@ public class SummaryController {
     @PostMapping("/generate")
     public ResponseEntity<String> generateSummary() {
         try {
-            summaryService.generateSummary();
+            summaryService.generateAllSummaries();
             return ResponseEntity.ok("Summary generated successfully.");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error generating summary: " + e.getMessage());

@@ -7,27 +7,26 @@ import org.springframework.core.io.Resource;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Service
 public class ProductFormatterService {
-    @Value("classpath:products-info.txt")
-    Resource productsFile;
-    private String productsData;
 
-    @PostConstruct
-    public void init() {
-        loadProductsData();
-    }
-    public String getProductsData() {
-        return productsData;
+    private static final String SUMMARIES_FOLDER = "src/main/resources/summary";
+
+    public String getProductsData(String filename) {
+        return loadProductsData(filename);
     }
 
-    private void loadProductsData() {
+    private String loadProductsData(String filename) {
         try {
-            productsData = new String(Files.readAllBytes(productsFile.getFile().toPath()));
+            Path filePath = Paths.get(SUMMARIES_FOLDER, filename + ".txt");
+            return new String(Files.readAllBytes(filePath));
         } catch (IOException e) {
             e.printStackTrace();
+            throw new RuntimeException("Error reading the product summary file: " + e.getMessage(), e);
         }
     }
 }

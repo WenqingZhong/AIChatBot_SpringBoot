@@ -4,14 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
+import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class SummaryService {
@@ -21,13 +16,24 @@ public class SummaryService {
 
     private static final int CHUNK_SIZE = 100; // Number of lines per chunk
 
-    private static final String INPUT_PATH = "src/main/resources/products.txt";
-    private static final String OUTPUT_PATH = "src/main/resources/products-info.txt";
+    private static final String PRODUCTS_FOLDER = "src/main/resources/products";
+    private static final String SUMMARIES_FOLDER = "src/main/resources/summary";
 
-    public void generateSummary() {
+    public void generateAllSummaries() throws IOException {
+        Path productsDir = Paths.get(PRODUCTS_FOLDER);
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(productsDir, "*.txt")) {
+            for (Path entry : stream) {
+                String fileName = entry.getFileName().toString();
+                String outputPath = Paths.get(SUMMARIES_FOLDER, fileName).toString();
+                generateSummary(entry.toString(), outputPath);
+            }
+        }
+    }
 
-        File inputFile = new File(INPUT_PATH);
-        File outputFile = new File(OUTPUT_PATH);
+    public void generateSummary(String inputFilePath, String outputFilePath) {
+
+        File inputFile = new File(inputFilePath);
+        File outputFile = new File(outputFilePath);
 
         try (BufferedReader reader = new BufferedReader(new FileReader(inputFile));
              BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
@@ -49,16 +55,15 @@ public class SummaryService {
                 processAndWriteChunk(chunk, writer);
             }
 
-        }catch (Exception e) {
-                e.printStackTrace();
-                throw new RuntimeException("Error processing file: " + e.getMessage(), e);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Error processing file: " + e.getMessage(), e);
         }
     }
 
     private void processAndWriteChunk(List<String> chunk, BufferedWriter writer) throws IOException {
 
         String chunkAsString = String.join("\n", chunk);
-        //System.out.println("This is chunk"+ chunkAsString);
         String summary = chatbotService.getSummary(chunkAsString);
         writer.write(summary);
         writer.newLine(); // Separate summaries by a new line
