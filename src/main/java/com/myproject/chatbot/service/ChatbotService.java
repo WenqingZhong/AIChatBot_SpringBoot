@@ -2,6 +2,7 @@ package com.myproject.chatbot.service;
 
 import com.jayway.jsonpath.JsonPath;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ import java.net.URL;
 @Service
 public class ChatbotService {
     private static final String URL = "https://api.openai.com/v1/chat/completions";
-    private static final String API_KEY = "XXX"; // Ensure to add your actual key here
+    private String API_KEY = "XXX"; // Ensure to add your actual key here
     private static final String MODEL = "gpt-3.5-turbo";
 
     @Autowired
@@ -31,15 +32,25 @@ public class ChatbotService {
 
     public String getResponse(String question) {
         String productsData = productFormatterService.getProductsData();
-        String test = "Product ID: 1 \n" +
-                "Product name: percale sheet set" +
-                "Product category: bedding" +
-                "Product URL: https://www.saatva.com/bedding/percale-sheet-set";
-
+        System.out.println(productsData);
 
         String completePrompt = "Please answer the question:  " + question + "using the following information: "+ productsData;
+        //String completePrompt = "Please answer the question:  " + question;
 
         String escapedPrompt = completePrompt.replace("\n", "\\n").replace("\"", "\\\"");
+
+        return chatGPT(escapedPrompt);
+    }
+
+    public String getSummary(String productInfo) {
+        //String productsData = productFormatterService.getProductsData();
+        System.out.println("I'm in getSummary");
+
+        String completePrompt = "Please summarize each product using the following information: "+ productInfo;
+        //String completePrompt = "Please answer the question:  " + question;
+
+        String escapedPrompt = completePrompt.replace("\n", "\\n").replace("\"", "\\\"");
+        //System.out.println("This is prompt"+escapedPrompt);
 
         return chatGPT(escapedPrompt);
     }
@@ -68,10 +79,12 @@ public class ChatbotService {
                 response.append(line);
             }
             br.close();
+            System.out.println("I'm in chatGPT");
 
             return extractMessageFromJSONResponse(response.toString());
 
         } catch (IOException e) {
+            System.out.println("I'm in chatGPT error");
             throw new RuntimeException(e);
         }
     }
@@ -80,70 +93,3 @@ public class ChatbotService {
         return JsonPath.parse(response).read("$.choices[0].message.content", String.class);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//import com.myproject.chatbot.model.Product;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
-//import org.springframework.web.reactive.function.client.WebClient;
-//
-//import java.util.Arrays;
-//import java.util.HashMap;
-//import java.util.List;
-//import java.util.Map;
-
-//@Service
-//public class ChatbotService {
-//
-//    private final WebClient webClient;
-//
-//    @Autowired
-//    private ProductFormatterService productFormatterService;
-//    //private List<Product> products;
-//
-//    public ChatbotService() {
-//        this.webClient = WebClient.builder()
-//                .baseUrl("https://api.openai.com")
-//                .build();
-//
-//        this.productFormatterService = new ProductFormatterService();
-//
-//    }
-//
-//    public String getResponse(String question) {
-//        String productsData = productFormatterService.getProductsData();
-//        //String formattedProducts = productFormatterService.formatProducts(products);
-//        String completePrompt = "Please answer this question:" +question+ "using these product information :"+ productsData + "\n" +"Do not ask any questions back or try to reach the max answer length with irrelevant information." ;
-//
-//        Map<String, Object> requestBody = new HashMap<>();
-//        requestBody.put("prompt", completePrompt);
-//        requestBody.put("max_tokens", 100);
-//        requestBody.put("temperature", 0.2);
-//
-//        System.out.println(completePrompt);
-//        System.out.println(requestBody);
-//
-//        String apiResponse = webClient.post()
-//                .uri("/v1/engines/davinci/completions") // This is a hypothetical endpoint, refer to actual API docs
-//                .header("Authorization", "Bearer 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")
-//                .bodyValue(requestBody)
-//                .retrieve()
-//                .bodyToMono(String.class)
-//                .block();
-//        return apiResponse;
-//    }
-//}
-

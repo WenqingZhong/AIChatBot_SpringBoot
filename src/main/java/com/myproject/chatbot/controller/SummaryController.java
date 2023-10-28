@@ -2,30 +2,28 @@ package com.myproject.chatbot.controller;
 
 import com.myproject.chatbot.service.SummaryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/summary")
 public class SummaryController {
 
-    private final SummaryService summaryService;
-
     @Autowired
-    public SummaryController(SummaryService summaryService) {
-        this.summaryService = summaryService;
-    }
+    private SummaryService summaryService;
 
-    @GetMapping("/summary")
-    public ResponseEntity<String> getSummary() {
+    @PostMapping("/generate")
+    public ResponseEntity<String> generateSummary() {
         try {
-            String summary = summaryService.getSummary();
-            return ResponseEntity.ok(summary);
+            summaryService.generateSummary();
+            return ResponseEntity.ok("Summary generated successfully.");
         } catch (Exception e) {
-            return ResponseEntity.status(500).body("Error generating summary: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error generating summary: " + e.getMessage());
         }
     }
 }
+
 
 
 

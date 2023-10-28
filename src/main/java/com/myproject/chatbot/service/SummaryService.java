@@ -9,45 +9,58 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class SummaryService {
 
-    private static final String OUTPUT_FILE = "products-info.txt";
-    private final ChatbotService chatbotService;
-
     @Autowired
-    public SummaryService(ChatbotService chatbotService) {
-        this.chatbotService = chatbotService;
-    }
+    private ChatbotService chatbotService;
 
-    public String getSummary() throws IOException {
-        String productData = readProductData();
-        String question = "Please provide a summary for the following product details:";
-        String completePrompt = question + "\n" + productData;
+    private static final int CHUNK_SIZE = 10; // Number of lines per chunk
 
-        String summary = chatbotService.getResponse(completePrompt);
+    private static final String INPUT_PATH = "src/main/resources/products.txt";
+    private static final String OUTPUT_PATH = "src/main/resources/products-info.txt";
 
-        // Save to file
-        saveSummaryToFile(summary);
+    public void generateSummary() {
 
-        return summary;
-    }
+        File inputFile = new File(INPUT_PATH);
+        File outputFile = new File(OUTPUT_PATH);
 
-    private String readProductData() throws IOException {
-        InputStream is = getClass().getClassLoader().getResourceAsStream("products.txt");
-        if (is == null) {
-            throw new FileNotFoundException("Cannot find products.txt");
+        try (BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+             BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
+
+            List<String> chunk = new ArrayList<>();
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                chunk.add(line);
+
+                if (chunk.size() == CHUNK_SIZE) {
+                    processAndWriteChunk(chunk, writer);
+                    chunk.clear();
+                }
+            }
+
+            // Handle the last chunk (which might be smaller than CHUNK_SIZE)
+            if (!chunk.isEmpty()) {
+                processAndWriteChunk(chunk, writer);
+            }
+
+        }catch (Exception e) {
+                e.printStackTrace();
+                throw new RuntimeException("Error processing file: " + e.getMessage(), e);
         }
-
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
-            return reader.lines().collect(Collectors.joining("\n"));
-        }
     }
 
-    private void saveSummaryToFile(String summary) throws IOException {
-        Path outputPath = Paths.get(OUTPUT_FILE);
-        Files.write(outputPath, summary.getBytes(StandardCharsets.UTF_8), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+    private void processAndWriteChunk(List<String> chunk, BufferedWriter writer) throws IOException {
+
+        String chunkAsString = String.join("\n", chunk);
+        //System.out.println("This is chunk"+ chunkAsString);
+        String summary = chatbotService.getSummary(chunkAsString);
+        writer.write(summary);
+        writer.newLine(); // Separate summaries by a new line
     }
 }

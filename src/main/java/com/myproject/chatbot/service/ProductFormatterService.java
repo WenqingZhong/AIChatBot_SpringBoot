@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 public class ProductFormatterService {
-    @Value("classpath:products.txt")
+    @Value("classpath:products-info.txt")
     Resource productsFile;
     private String productsData;
 
@@ -29,25 +29,5 @@ public class ProductFormatterService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-
-
-
-
-
-
-    public String formatProducts(List<Product> products) {
-        StringBuilder formatted = new StringBuilder("Products:\n");
-        int counter = 1;
-        for (Product product : products) {
-            formatted.append(counter)
-                    .append(". ID: ").append(product.getId())
-                    .append(", Name: ").append(product.getName())
-                    .append(", Description: ").append(product.getDescription())
-                    .append("\n");
-            counter++;
-        }
-        return formatted.toString();
     }
 }
